@@ -3,7 +3,7 @@ class PictureAndContentsController < ApplicationController
   def index
     @picture_and_contents = PictureAndContent.all
   end
-  
+
   def new
     if params[:back]
       @picture_and_content = PictureAndContent.new(picture_and_content_params)
@@ -22,6 +22,12 @@ class PictureAndContentsController < ApplicationController
   end
   def confirm
     @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
+  end
+  
+  def destroy
+    @picture_and_content.destroy
+    flash[:notice] = '投稿の削除が完了しました'
+    redirect_to picture_and_contents_path
   end
   private
   def picture_and_content_params

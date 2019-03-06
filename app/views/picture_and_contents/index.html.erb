@@ -2,8 +2,10 @@
 
 <% @picture_and_contents.each do |d|  %>
   <div>
-    <%= d.user.name %>
     <%= image_tag d.image.url %>
+    <%= d.user.name %>
     <%= d.content %>
+    <%= link_to 'Edit',edit_picture_and_content_path(d.id) %>
+    <%= link_to 'Delete', picture_and_content_path(d.id), method: :delete, data: { confirm: '投稿を削除しますか' } %>
   </div>
 <% end %>
