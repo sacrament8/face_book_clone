@@ -3,9 +3,15 @@ class PictureAndContentsController < ApplicationController
   def index
     @picture_and_contents = PictureAndContent.all
   end
+  
   def new
-    @picture_and_content = PictureAndContent.new
+    if params[:back]
+      @picture_and_content = PictureAndContent.new(picture_and_content_params)
+    else
+      @picture_and_content = PictureAndContent.new
+    end
   end
+
   def create
     @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
     if @picture_and_content.save

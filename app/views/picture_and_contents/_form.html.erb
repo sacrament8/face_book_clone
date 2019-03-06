@@ -1,4 +1,4 @@
-<%= form_with model: @picture_and_content, local: true do |f| %>
+<%= form_with model: @picture_and_content, local: true, url: new_or_edit do |f| %>
 <!--エラー表示部分-->
   <% if @picture_and_content.errors.any? %>
     <h2><%= @picture_and_content.errors.count %>件のエラーがあります。</h2>
@@ -11,12 +11,14 @@
 <!--フォーム本体-->
 <div>
   <%= f.label :image %>
+  <%= image_tag @picture_and_content.image.url if @picture_and_content.image.url %>
   <%= f.file_field :image %>
 </div>
 <div>
   <%= f.label :content %>
   <%= f.text_field :content %>
 </div>
+<%= f.hidden_field :image_cache %>
 <div>
   <%= f.submit 'post' %>
 </div>

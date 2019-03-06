@@ -1,0 +1,14 @@
+<h2>confrim</h2>
+<%= form_with model: @picture_and_content, url: picture_and_contents_path, local: true do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
+  <div>
+    <%= image_tag @picture_and_content.image.url if @picture_and_content.image.url %>
+  </div>
+  <div>コメント: <%= @picture_and_content.content %></div>
+  <%= f.submit 'Post' %>
+<% end %>
+<%= form_with model:@picture_and_content, url:new_picture_and_content_path, local: true, method: "get" do |f| %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.submit "戻る", name: "back" %>
+<% end %>
