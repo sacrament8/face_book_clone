@@ -7,12 +7,15 @@ class PictureAndContentsController < ApplicationController
     @picture_and_content = PictureAndContent.new
   end
   def create
-    @picture_and_content = PictureAndContent.new(picture_and_content_params)
+    @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
     if @picture_and_content.save
       redirect_to picture_and_contents_path
     else
       render 'new'
     end
+  end
+  def confirm
+    @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
   end
   private
   def picture_and_content_params

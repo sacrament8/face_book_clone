@@ -1,0 +1,23 @@
+<%= form_with model: @picture_and_content, local: true do |f| %>
+<!--エラー表示部分-->
+  <% if @picture_and_content.errors.any? %>
+    <h2><%= @picture_and_content.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @picture_and_content.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<!--フォーム本体-->
+<div>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+</div>
+<div>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+</div>
+<div>
+  <%= f.submit 'post' %>
+</div>
+<% end %>
