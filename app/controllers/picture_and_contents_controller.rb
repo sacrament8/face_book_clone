@@ -19,7 +19,7 @@ class PictureAndContentsController < ApplicationController
   end
   private
   def picture_and_content_params
-    params.require(:picture_and_content).permit(:image, :content, :user_id)
+    params.require(:picture_and_content).permit(:image, :image_cache, :content, :user_id)
   end
   def set_picure_and_content
     @picture_and_content = PictureAndContent.find(params[:id])

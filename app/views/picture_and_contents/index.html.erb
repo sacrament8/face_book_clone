@@ -3,7 +3,7 @@
 <% @picture_and_contents.each do |d|  %>
   <div>
     <%= d.user.name %>
-    <%= d.image %>
+    <%= image_tag d.image.url %>
     <%= d.content %>
   </div>
 <% end %>
