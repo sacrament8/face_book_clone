@@ -1,5 +1,5 @@
 class PictureAndContentsController < ApplicationController
-  before_action :set_picure_and_content, only: [:show, :destroy, :eidt, :update]
+  before_action :set_picure_and_content, only: [:show, :destroy, :edit, :update]
   def index
     @picture_and_contents = PictureAndContent.all
   end
@@ -12,6 +12,13 @@ class PictureAndContentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+  def update
+    @picture_and_content.update(picture_and_content_params)
+    flash[:notice] = '投稿の編集に成功しました'
+    redirect_to picture_and_contents_path
+  end
   def create
     @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
     if @picture_and_content.save
@@ -23,7 +30,7 @@ class PictureAndContentsController < ApplicationController
   def confirm
     @picture_and_content = current_user.picture_and_contents.build(picture_and_content_params)
   end
-  
+
   def destroy
     @picture_and_content.destroy
     flash[:notice] = '投稿の削除が完了しました'
