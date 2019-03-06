@@ -16,6 +16,8 @@
   <% if logged_in? %>
     <%= link_to 'my page', user_path(current_user.id) %>
     <%= link_to 'Log out', session_path(current_user.id), method: :delete %>
+    <%= link_to 'index', picture_and_contents_path %>
+    <%= link_to 'new', new_picture_and_content_path%>
   <% else %>
     <%= link_to 'Sign Up', new_user_path %>
     <%= link_to 'Sign in', new_session_path %>

@@ -1,0 +1,9 @@
+<h1>index page</h1>
+
+<% @picture_and_contents.each do |d|  %>
+  <div>
+    <%= d.user.name %>
+    <%= d.image %>
+    <%= d.content %>
+  </div>
+<% end %>
