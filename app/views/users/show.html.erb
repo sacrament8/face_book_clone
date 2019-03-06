@@ -1,4 +1,16 @@
-<h2>User Personal Page</h2>
-
-<h3>ようこそ<%= @user.name %>さん</h3>
-<div>あなたのメールアドレスは<%= @user.email %>です</div>
+<div class="container">
+  <div class="card mt-1">
+    <h5 class="card-header bg-info text-light">ようこそ<%= @user.name %>さん</h5>
+    <div class="card-body">
+      <p>新規投稿メニューから画像とコメントを投稿してみませんか?</p>
+      <p>投稿一覧からはみんなの投稿が見れますよ</p>
+    </div>
+  </div>
+  <!--自分の投稿一覧-->
+  <div class="card mt-2">
+    <h5 class="card-header bg-info text-light"><%= @user.name %>さんの投稿一覧</h5>
+    <div class="card-body">
+      
+    </div>
+  </div>
+</div>

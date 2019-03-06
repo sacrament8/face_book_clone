@@ -1,11 +1,19 @@
-<h1>index page</h1>
-
+<div class="row">
 <% @picture_and_contents.each do |d|  %>
-  <div class="post_wrapper">
-    <%= image_tag d.image.url %>
-    <%= d.user.name %>
-    <%= d.content %>
-    <%= link_to 'Edit',edit_picture_and_content_path(d.id) %>
-    <%= link_to 'Delete', picture_and_content_path(d.id), method: :delete, data: { confirm: '投稿を削除しますか' } %>
+  <div class="col-lg-3">
+    <div class="image">
+      <%= image_tag d.image.url %>
+    </div>
+    <div>
+      <%= d.user.name %>
+    </div>
+    <div>
+      <%= d.content %>
+    </div>
+    <div>
+      <%= link_to 'Edit',edit_picture_and_content_path(d.id) %>
+      <%= link_to 'Delete', picture_and_content_path(d.id), method: :delete, data: { confirm: '投稿を削除しますか' } %>
+    </div>
   </div>
 <% end %>
+</div>
