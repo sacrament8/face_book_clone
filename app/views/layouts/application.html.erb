@@ -8,20 +8,40 @@
   </head>
 
   <body>
-  <!--flashメッセージがあれば表示-->
+<header>
+    <!--ログインユーザか判断して表示の切り替え-->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand text-light" href="#">FBC</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <% if logged_in? %>
+        <div class="navbar-nav">
+        <%= link_to "#{current_user.name}", user_path(current_user.id), class: 'nav-item nav-link text-light' %>
+        <%= link_to '投稿一覧', picture_and_contents_path, class: 'nav-item nav-link text-light' %>
+        <%= link_to '新規投稿', new_picture_and_content_path, class: 'nav-item nav-link text-light' %>
+        </div>
+        <div class="navbar-nav ml-auto">
+        <%= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'nav-item nav-link text-light' %>
+        </div>
+      <% else %>
+        <div class="navbar-nav ml-auto">
+        <%= link_to '会員登録', new_user_path, class: 'nav-item nav-link text-light' %>
+        <%= link_to 'ログイン', new_session_path, class: 'nav-item nav-link text-light' %>
+        </div>
+      <% end %>
+  </div>
+</nav>
+</header>
+ <div class= "container">
+
+ <!--flashメッセージがあれば表示-->
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "#{key}" %>
   <% end %>
-  <!--ログインユーザか判断して表示の切り替え-->
-  <% if logged_in? %>
-    <%= link_to 'my page', user_path(current_user.id) %>
-    <%= link_to 'Log out', session_path(current_user.id), method: :delete %>
-    <%= link_to 'index', picture_and_contents_path %>
-    <%= link_to 'new', new_picture_and_content_path%>
-  <% else %>
-    <%= link_to 'Sign Up', new_user_path %>
-    <%= link_to 'Sign in', new_session_path %>
-  <% end %>
+
   <%= yield %>
+</div>
   </body>
 </html>
